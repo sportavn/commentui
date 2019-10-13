@@ -1,4 +1,10 @@
+require_dependency "commentui/application_record"
+
 module Commentui
   class Thread < ApplicationRecord
-  end
-end
+    belongs_to :commentable, polymorphic: true
+    belongs_to :closer, optional: true, polymorphic: true
+
+    has_many :comments, dependent: :destroy
+  end ##
+end #

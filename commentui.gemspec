@@ -17,10 +17,12 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
   s.add_dependency "rails", "~> 5.1.6"
+  s.add_dependency "pagy", "~> 3.6.0"
 
   s.add_development_dependency "rspec-rails", "~> 3.9"
   s.add_development_dependency "database_cleaner", "~> 1.7"
   s.add_development_dependency "simplecov", "~> 0.17.1"
-  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "pg", "~> 0.18.4"
+  s.add_development_dependency "pry-rails", "~> 0.3.9"
 end
 
