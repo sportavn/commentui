@@ -24,5 +24,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "simplecov", "~> 0.17.1"
   s.add_development_dependency "pg", "~> 0.18.4"
   s.add_development_dependency "pry-rails", "~> 0.3.9"
+  s.add_development_dependency "puma", "~> 4.2.1"
 end
 

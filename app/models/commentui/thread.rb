@@ -6,5 +6,5 @@ module Commentui
     belongs_to :closer, optional: true, polymorphic: true
 
     has_many :comments, dependent: :destroy
-  end ##
-end #
+  end #
+end ##
