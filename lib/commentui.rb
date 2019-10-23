@@ -5,13 +5,8 @@ module Commentui
   # Your code goes here...
   require "commentui/engine"
   require "commentui/version"
-  require "commentui/shared_helper"
   require "commentui/acts_as_commentuier"
   require "commentui/acts_as_commentuiable"
-
-  ActiveSupport.on_load(:action_controller_base) do
-    include SharedHelper
-  end
 
   ActiveSupport.on_load(:active_record) do
     include ActsAsCommentuier
@@ -21,6 +16,10 @@ module Commentui
   def self.configure
     yield self
   end
+
+  # The current user (devise current_user helper)
+  mattr_accessor :base_controller
+  @@base_controller = ActionController::Base
 
   # The current user (devise current_user helper)
   mattr_accessor :current_user_lambda

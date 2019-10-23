@@ -1,6 +1,5 @@
-class Commentui::ApplicationController < ActionController::Base
-  protect_from_forgery with: :null_session
-  before_action :set_commentui_user
+class Commentui::ApplicationController < Commentui.base_controller
+  before_action :check_commentui_user
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
@@ -15,8 +14,13 @@ class Commentui::ApplicationController < ActionController::Base
     render_json_errors("Record not found", :not_found)
   end
 
-  def set_commentui_user
+  def check_commentui_user
     return if commentui_user.present?
+
     render_json_errors("Permission denied")
+  end
+
+  def commentui_user
+    @commentui_user ||= Commentui.current_user_lambda.call(self)
   end
 end
