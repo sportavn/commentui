@@ -61,5 +61,5 @@ module Commentui
 
       render_json_errors("Permission denied")
     end
-  end ##
-end #
+  end #
+end ##

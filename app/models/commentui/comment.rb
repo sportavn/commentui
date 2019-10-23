@@ -22,5 +22,5 @@ module Commentui
         editor: editor,
       }
     end
-  end #
-end ##
+  end ##
+end #
