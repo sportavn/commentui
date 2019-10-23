@@ -2,15 +2,15 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 20 } %>
-  username: austin
-  password: password
-  host: localhost
-  port: 5432
+  username: <%= ENV['COMMENTUI_DATABASE_USERNAME'] %>
+  password: <%= ENV['COMMENTUI_DATABASE_PASSWORD'] %>
+  host: <%= ENV['COMMENTUI_DATABASE_HOST'] %>
+  port: <%= ENV['COMMENTUI_DATABASE_PORT'] %>
 
 development:
   <<: *default
-  database: commentui_development
+  database: <%= ENV['COMMENTUI_DATABASE_DATABASE_DEV'] %>
 
 test:
   <<: *default
-  database: commentui_test
+  database: <%= ENV['COMMENTUI_DATABASE_DATABASE_TEST'] %>

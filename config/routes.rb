@@ -1,7 +1,4 @@
 Commentui::Engine.routes.draw do
-  puts "=" * 30
-  p Commentui.allow_modify_comment
-  p Commentui.allow_modify_destroy
   resources :threads, only: [:show] do
     comment_resources = [:index, :show, :create]
     comment_resources << :update if Commentui.allow_modify_comment
