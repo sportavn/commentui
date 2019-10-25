@@ -11,6 +11,7 @@ require "action_cable/engine"
 require "sprockets/railtie"
 
 Bundler.require(*Rails.groups)
+require 'dotenv-rails'
 require "commentui"
 
 module Dummy
