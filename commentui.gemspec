@@ -7,11 +7,11 @@ require "commentui/version"
 Gem::Specification.new do |s|
   s.name        = "commentui"
   s.version     = Commentui::VERSION
-  s.authors     = ["Huuphuoc19"]
+  s.authors     = ["Phuoc Phan"]
   s.email       = ["phanphuocdt@gmail.com"]
   s.homepage    = "https://sporta.vn"
-  s.summary     = "Summary of Commentui."
-  s.description = "Description of Commentui."
+  s.summary     = "A simple comment API gem"
+  s.description = "Allow user to post comment to your models by APIs"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]

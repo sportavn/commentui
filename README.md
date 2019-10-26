@@ -1,25 +1,88 @@
 # Commentui
-Short description and motivation.
-
-## Usage
-How to use my plugin.
+A simple comment API gem
 
 ## Installation
-Add this line to your application's Gemfile:
+### 1. Gem install
 
+Add this line to your application's Gemfile:
 ```ruby
-gem 'commentui'
+gem 'commentui', "~> 0.1"
 ```
 
 And then execute:
 ```bash
-$ bundle
+$ bundle install
 ```
-
 Or install it yourself as:
 ```bash
 $ gem install commentui
 ```
+### 2. Migrations
+Run the following [command](https://edgeguides.rubyonrails.org/engines.html#engine-setup) to copy Commentui's migrations to your application:
+```bash
+$ bundle exec rake commentui:install:migrations
+```
+
+
+Then run migrate database command:
+```bash
+$ rake db:migrate
+```
+
+To remove engine migration, run:
+```bash
+$ rake db:migrate SCOPE=commentui VERSION=0
+```
+
+### 3. Initializers
+Run the following command to copy Commentui's initializers to your application:
+```bash
+$ bundle exec rake commentui:install:initializers
+```
+
+### 4. Route config
+Add this line to your Rails application's routes.rb file:
+```ruby
+  mount Commentui::Engine => '/commentui'
+```
+
+## Usage
+### 1. Models
+Add this line to your model(s) should be able to post comments (usually user model):
+```ruby
+  acts_as_commentuier
+```
+The model'll look like:
+```ruby
+  class User < ApplicationRecord
+    acts_as_commentuier
+  end
+```
+
+Add this line to any models you want to be able to comment on (post,...)
+```ruby
+  acts_as_commentuiable
+```
+The model'll look like:
+```ruby
+  class Post < ApplicationRecord
+    acts_as_commentuiable
+  end
+```
+
+### 2. Controllers
+Supported actions
+
+|Helper|HTTP Verb|Path|Controller#Action|
+|--- |--- |--- |--- |
+|thread_comments_path|GET|/threads/:thread_id/comments(.:format)|commentui/comments#index|
+||POST|/threads/:thread_id/comments(.:format)|commentui/comments#create|
+|thread_comment_path|GET|/threads/:thread_id/comments/:id(.:format)|commentui/comments#show|
+||PATCH|/threads/:thread_id/comments/:id(.:format)|commentui/comments#update|
+||PUT|/threads/:thread_id/comments/:id(.:format)|commentui/comments#update|
+||DELETE|/threads/:thread_id/comments/:id(.:format)|commentui/comments#destroy|
+|thread_path|GET|/threads/:id(.:format)|commentui/threads#show|
+
 
 ## Contributing
 Contribution directions go here.
