@@ -26,4 +26,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "pry-rails", "~> 0.3.9"
   s.add_development_dependency "puma", "~> 4.2.1"
   s.add_development_dependency "dotenv-rails", "~> 2.7.5"
+  s.add_development_dependency "factory_bot_rails", "~> 5.1.1"
+  s.add_development_dependency "faker", "~> 2.6"
 end
