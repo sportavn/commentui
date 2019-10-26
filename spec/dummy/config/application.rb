@@ -14,13 +14,17 @@ Bundler.require(*Rails.groups)
 require 'dotenv-rails'
 require "commentui"
 
-module Dummy
-  module DummyControllers
-    def current_user
-      @current_user ||= User.first_or_create!
-    end
-  end
+ActionController::Base.class_exec do
+  attr_accessor :current_user
+  helper_method :current_user
 
+  def current_user
+    @current_user ||= User.first_or_create!(email: "#{SecureRandom.hex(6)}@ex.com")
+  end
+end
+
+
+module Dummy
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
@@ -28,9 +32,6 @@ module Dummy
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    ActiveSupport.on_load(:action_controller_base) do
-      include DummyControllers
-    end
   end
 end
 

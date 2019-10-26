@@ -11,7 +11,7 @@ module Commentui
 
     def index
       @comments = comments_scope.includes(:creator, :editor)
-      @pagy, @comments = pagy(@comments)
+      @pagy, @comments = pagy(@comments, items: params[:items])
       render json: @comments
     end
 
@@ -32,9 +32,7 @@ module Commentui
     end
 
     def destroy
-      return render json: @comment if @comment.destroy
-
-      render_json_errors(@comment.errors.full_messages)
+      render json: @comment.destroy
     end
 
     private

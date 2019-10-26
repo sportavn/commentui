@@ -8,6 +8,7 @@ require 'rspec/rails'
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 
 require 'database_cleaner'
+require 'faker'
 require 'factory_bot_rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
