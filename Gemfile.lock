@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    commentui (0.1.0)
+    commentui (0.1.01)
       pagy (~> 3.6.0)
       rails (~> 5.1.6)
 
