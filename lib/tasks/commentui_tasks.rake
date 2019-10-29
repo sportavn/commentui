@@ -11,6 +11,6 @@ namespace :commentui do
           print "Copied initializer #{File.basename(file)} from commentui\n"
         end
       end
-    end
-  end
-end
+    end ###
+  end ##
+end #

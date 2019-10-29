@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Commentui::VERSION
   s.authors     = ["Phuoc Phan"]
   s.email       = ["phanphuocdt@gmail.com"]
-  s.homepage    = "https://sporta.vn"
+  s.homepage    = "https://github.com/sportavn/commentui/"
   s.summary     = "A simple comment API gem"
   s.description = "Allow user to post comment to your models by APIs"
   s.license     = "MIT"

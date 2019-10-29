@@ -6,5 +6,5 @@ module Commentui
       g.test_framework :rspec
       g.factory_bot dir: "spec/factories", suffix: "factory"
     end
-  end
-end
+  end ##
+end #
