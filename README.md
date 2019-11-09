@@ -6,7 +6,7 @@ A simple comment API gem
 
 Add this line to your application's Gemfile:
 ```ruby
-gem 'commentui', "~> 0.1"
+gem 'commentui', "~> 0.2.0"
 ```
 
 And then execute:
@@ -18,7 +18,7 @@ Or install it yourself as:
 $ gem install commentui
 ```
 ### 2. Migrations
-Run the following [command](https://edgeguides.rubyonrails.org/engines.html#engine-setup) to copy Commentui's migrations to your application:
+Run the following [command](https://edgeguides.rubyonrails.org/engines.html#engine-setup) to copy Commentui's migrations to your application (run when update gem also):
 ```bash
 $ bundle exec rake commentui:install:migrations
 ```
@@ -75,13 +75,13 @@ Supported actions
 
 |Helper|HTTP Verb|Path|Controller#Action|
 |--- |--- |--- |--- |
-|thread_comments_path|GET|/threads/:thread_id/comments(.:format)|commentui/comments#index|
-||POST|/threads/:thread_id/comments(.:format)|commentui/comments#create|
-|thread_comment_path|GET|/threads/:thread_id/comments/:id(.:format)|commentui/comments#show|
-||PATCH|/threads/:thread_id/comments/:id(.:format)|commentui/comments#update|
-||PUT|/threads/:thread_id/comments/:id(.:format)|commentui/comments#update|
-||DELETE|/threads/:thread_id/comments/:id(.:format)|commentui/comments#destroy|
-|thread_path|GET|/threads/:id(.:format)|commentui/threads#show|
+|topic_comments_path|GET|/topics/:topic_id/comments(.:format)|commentui/comments#index|
+||POST|/topics/:topic_id/comments(.:format)|commentui/comments#create|
+|topic_comment_path|GET|/topics/:topic_id/comments/:id(.:format)|commentui/comments#show|
+||PATCH|/topics/:topic_id/comments/:id(.:format)|commentui/comments#update|
+||PUT|/topics/:topic_id/comments/:id(.:format)|commentui/comments#update|
+||DELETE|/topics/:topic_id/comments/:id(.:format)|commentui/comments#destroy|
+|topic_path|GET|/topics/:id(.:format)|commentui/topics#show|
 
 
 ## Contributing

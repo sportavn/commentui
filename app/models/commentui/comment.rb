@@ -2,7 +2,7 @@ require_dependency "commentui/application_record"
 
 module Commentui
   class Comment < ApplicationRecord
-    belongs_to :thread
+    belongs_to :topic
     belongs_to :creator, polymorphic: true
     belongs_to :editor, optional: true, polymorphic: true
 

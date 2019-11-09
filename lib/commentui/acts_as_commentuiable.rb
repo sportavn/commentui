@@ -7,13 +7,13 @@ module Commentui
     class_methods do
       def acts_as_commentuiable
         class_exec do
-          has_one :commentui_thread,
+          has_one :commentui_topic,
                   dependent: :nullify,
                   as: :commentable,
-                  class_name: "Commentui::Thread"
+                  class_name: "Commentui::Topic"
 
-          def commentui_thread
-            @commentui_thread ||= (super || create_commentui_thread)
+          def commentui_topic
+            @commentui_topic ||= (super || create_commentui_topic)
           end
         end
       end
