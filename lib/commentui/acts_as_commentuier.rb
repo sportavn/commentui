@@ -15,10 +15,10 @@ module Commentui
                    dependent: :nullify,
                    as: :editor,
                    class_name: "Commentui::Comment"
-          has_many :commentui_closed_threads,
+          has_many :commentui_closed_topics,
                    dependent: :nullify,
                    as: :closer,
-                   class_name: "Commentui::Thread"
+                   class_name: "Commentui::Topic"
         end
       end
     end ###

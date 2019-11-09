@@ -1,7 +1,7 @@
 require_dependency "commentui/application_record"
 
 module Commentui
-  class Thread < ApplicationRecord
+  class Topic < ApplicationRecord
     belongs_to :commentable, polymorphic: true
     belongs_to :closer, optional: true, polymorphic: true
 

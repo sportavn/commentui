@@ -1,5 +1,5 @@
 FactoryBot.define  do
-  factory :thread, class: Commentui::Thread do
+  factory :topic, class: Commentui::Topic do
     association :commentable, factory: :game
   end
 end

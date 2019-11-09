@@ -2,14 +2,14 @@ require "rails_helper"
 
 module Commentui
   RSpec.describe Comment, type: :model do
-    let!(:thread) { create(:thread) }
+    let!(:topic) { create(:topic) }
     let!(:creator) { create(:user) }
     let!(:another_user) { create(:user) }
-    let!(:comment) { create(:comment, thread: thread, creator: creator, editor: creator) }
+    let!(:comment) { create(:comment, topic: topic, creator: creator, editor: creator) }
 
     describe '#create' do
       it { expect(comment.valid?).to eq(true) }
-      it { expect(comment.thread).to eq(thread) }
+      it { expect(comment.topic).to eq(topic) }
       it { expect(comment.creator).to eq(creator) }
       it { expect(comment.editor).to eq(creator) }
 

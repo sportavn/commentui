@@ -75,13 +75,13 @@ Supported actions
 
 |Helper|HTTP Verb|Path|Controller#Action|
 |--- |--- |--- |--- |
-|thread_comments_path|GET|/threads/:thread_id/comments(.:format)|commentui/comments#index|
-||POST|/threads/:thread_id/comments(.:format)|commentui/comments#create|
-|thread_comment_path|GET|/threads/:thread_id/comments/:id(.:format)|commentui/comments#show|
-||PATCH|/threads/:thread_id/comments/:id(.:format)|commentui/comments#update|
-||PUT|/threads/:thread_id/comments/:id(.:format)|commentui/comments#update|
-||DELETE|/threads/:thread_id/comments/:id(.:format)|commentui/comments#destroy|
-|thread_path|GET|/threads/:id(.:format)|commentui/threads#show|
+|topic_comments_path|GET|/topics/:topic_id/comments(.:format)|commentui/comments#index|
+||POST|/topics/:topic_id/comments(.:format)|commentui/comments#create|
+|topic_comment_path|GET|/topics/:topic_id/comments/:id(.:format)|commentui/comments#show|
+||PATCH|/topics/:topic_id/comments/:id(.:format)|commentui/comments#update|
+||PUT|/topics/:topic_id/comments/:id(.:format)|commentui/comments#update|
+||DELETE|/topics/:topic_id/comments/:id(.:format)|commentui/comments#destroy|
+|topic_path|GET|/topics/:id(.:format)|commentui/topics#show|
 
 
 ## Contributing

@@ -3,7 +3,7 @@ require "rails_helper"
 module Commentui
   RSpec.describe ActsAsCommentuier, type: :lib do
     let!(:user) { create(:user) }
-    let!(:thread) { create(:thread, closer: user) }
+    let!(:topic) { create(:topic, closer: user) }
     let!(:comment1) { create(:comment, creator: user) }
     let!(:comment2) { create(:comment, creator: user, editor: user) }
 
@@ -16,7 +16,7 @@ module Commentui
       it "add methods to model acts_as_commentuier" do
         expect(user.commentui_comments).to match_array([comment1, comment2])
         expect(user.commentui_edited_comments).to match_array([comment2])
-        expect(user.commentui_closed_threads).to match_array([thread])
+        expect(user.commentui_closed_topics).to match_array([topic])
       end
     end ###
 
@@ -34,9 +34,9 @@ module Commentui
         expect(comment3.reload.editor).to eq(nil)
       end
 
-      it "set null closer all closed threads when creator is destroyed" do
+      it "set null closer all closed topics when creator is destroyed" do
         user.destroy
-        expect(thread.reload.closer).to eq(nil)
+        expect(topic.reload.closer).to eq(nil)
       end
     end ###
   end ##

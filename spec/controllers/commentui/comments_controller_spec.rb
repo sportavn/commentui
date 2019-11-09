@@ -5,10 +5,10 @@ module Commentui
     routes { Commentui::Engine.routes }
 
     let!(:user) { create(:user) }
-    let!(:thread) { create(:thread) }
-    let!(:comment1) { create(:comment, thread: thread, creator: user) }
-    let!(:comment2) { create(:comment, thread: thread) }
-    let!(:comment3) { create(:comment, thread: thread) }
+    let!(:topic) { create(:topic) }
+    let!(:comment1) { create(:comment, topic: topic, creator: user) }
+    let!(:comment2) { create(:comment, topic: topic) }
+    let!(:comment3) { create(:comment, topic: topic) }
 
     before do
       controller.current_user = user
@@ -17,15 +17,15 @@ module Commentui
     describe "#index" do
       context "default" do
         it do
-          get :index, params: { thread_id: thread.id }
-          expect(response.body).to eq(thread.comments.includes(:creator, :editor).to_json)
+          get :index, params: { topic_id: topic.id }
+          expect(response.body).to eq(topic.comments.includes(:creator, :editor).to_json)
         end
       end
 
       context "paging" do
         it do
-          get :index, params: { thread_id: thread.id, page: 2, items: 1 }
-          expect(response.body).to eq(thread.comments.includes(:creator, :editor).offset(1).limit(1).to_json)
+          get :index, params: { topic_id: topic.id, page: 2, items: 1 }
+          expect(response.body).to eq(topic.comments.includes(:creator, :editor).offset(1).limit(1).to_json)
         end
       end
     end ###
@@ -34,7 +34,7 @@ module Commentui
       context "valid data" do
         it do
           params = {
-            thread_id: thread.id,
+            topic_id: topic.id,
             comment: {
               content: Faker::Lorem.sentence,
             },
@@ -50,7 +50,7 @@ module Commentui
       context "content empty" do
         it do
           params = {
-            thread_id: thread.id,
+            topic_id: topic.id,
             comment: {
               content: nil,
             },
@@ -68,7 +68,7 @@ module Commentui
       context "user is the comment creator" do
         it do
           params = {
-            thread_id: thread.id,
+            topic_id: topic.id,
             id: comment1.id,
             comment: {
               content: Faker::Lorem.sentence,
@@ -84,7 +84,7 @@ module Commentui
       context "user is not the comment creator" do
         it do
           params = {
-            thread_id: thread.id,
+            topic_id: topic.id,
             id: comment2.id,
             comment: {
               content: Faker::Lorem.sentence,
@@ -100,7 +100,7 @@ module Commentui
       context "content empty" do
         it do
           params = {
-            thread_id: thread.id,
+            topic_id: topic.id,
             id: comment1.id,
             comment: {
               content: "",
@@ -118,7 +118,7 @@ module Commentui
       context "user is the comment creator" do
         it do
           params = {
-            thread_id: thread.id,
+            topic_id: topic.id,
             id: comment1.id,
             format: :json,
           }
@@ -132,7 +132,7 @@ module Commentui
       context "user is not the comment creator" do
         it do
           params = {
-            thread_id: thread.id,
+            topic_id: topic.id,
             id: comment2.id,
             format: :json,
           }

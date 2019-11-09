@@ -4,7 +4,7 @@ module Commentui
   class CommentsController < ApplicationController
     include Pagy::Backend
 
-    before_action :set_thread
+    before_action :set_topic
     before_action :set_comment, only: [:update, :destroy]
     before_action :check_user, only: [:update, :destroy]
     after_action { pagy_headers_merge(@pagy) if @pagy }
@@ -37,12 +37,12 @@ module Commentui
 
     private
 
-    def set_thread
-      @thread ||= Commentui::Thread.find(params[:thread_id])
+    def set_topic
+      @topic ||= Commentui::Topic.find(params[:topic_id])
     end
 
     def comments_scope
-      @thread.comments.order(created_at: :asc)
+      @topic.comments.order(created_at: :asc)
     end
 
     def set_comment
