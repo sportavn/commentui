@@ -6,7 +6,7 @@ A simple comment API gem
 
 Add this line to your application's Gemfile:
 ```ruby
-gem 'commentui', "~> 0.1"
+gem 'commentui', "~> 0.2.0"
 ```
 
 And then execute:
@@ -18,7 +18,7 @@ Or install it yourself as:
 $ gem install commentui
 ```
 ### 2. Migrations
-Run the following [command](https://edgeguides.rubyonrails.org/engines.html#engine-setup) to copy Commentui's migrations to your application:
+Run the following [command](https://edgeguides.rubyonrails.org/engines.html#engine-setup) to copy Commentui's migrations to your application (run when update gem also):
 ```bash
 $ bundle exec rake commentui:install:migrations
 ```
