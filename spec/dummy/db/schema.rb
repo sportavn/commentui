@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191014134723) do
+ActiveRecord::Schema.define(version: 20191109044444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "commentui_comments", force: :cascade do |t|
-    t.bigint "thread_id", null: false
+    t.bigint "topic_id", null: false
     t.string "creator_type", null: false
     t.bigint "creator_id", null: false
     t.string "editor_type"
@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(version: 20191014134723) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["creator_id", "creator_type", "thread_id"], name: "index_commentui_comments_on_c_id_and_c_type_and_t_id"
+    t.index ["creator_id", "creator_type", "topic_id"], name: "index_commentui_comments_on_c_id_and_c_type_and_t_id"
     t.index ["editor_type", "editor_id"], name: "index_commentui_comments_on_editor_type_and_editor_id"
   end
 
-  create_table "commentui_threads", force: :cascade do |t|
+  create_table "commentui_topics", force: :cascade do |t|
     t.string "commentable_type"
     t.bigint "commentable_id"
     t.string "closer_type"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 20191014134723) do
     t.datetime "closed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["closer_type", "closer_id"], name: "index_commentui_threads_on_closer_type_and_closer_id"
-    t.index ["commentable_type", "commentable_id"], name: "index_commentui_threads_on_commentable_type_and_commentable_id", unique: true
+    t.index ["closer_type", "closer_id"], name: "index_commentui_topics_on_closer_type_and_closer_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_commentui_topics_on_commentable_type_and_commentable_id", unique: true
   end
 
   create_table "games", force: :cascade do |t|
@@ -54,5 +54,5 @@ ActiveRecord::Schema.define(version: 20191014134723) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "commentui_comments", "commentui_threads", column: "thread_id", on_update: :cascade, on_delete: :cascade
+  add_foreign_key "commentui_comments", "commentui_topics", column: "topic_id", on_update: :cascade, on_delete: :cascade
 end
