@@ -32,4 +32,8 @@ module Commentui
   # The flag allow destroy comment or not
   mattr_accessor :allow_modify_destroy
   @@allow_modify_destroy = true
+
+  # The flag allow reply comment or not
+  mattr_accessor :comment_orders_by
+  @@comment_orders_by = { created_at: :asc }
 end #

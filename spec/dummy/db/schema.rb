@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191109044444) do
+ActiveRecord::Schema.define(version: 20191121134911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,8 +25,11 @@ ActiveRecord::Schema.define(version: 20191109044444) do
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "parent_id"
+    t.boolean "has_children", default: false
     t.index ["creator_id", "creator_type", "topic_id"], name: "index_commentui_comments_on_c_id_and_c_type_and_t_id"
     t.index ["editor_type", "editor_id"], name: "index_commentui_comments_on_editor_type_and_editor_id"
+    t.index ["parent_id"], name: "index_commentui_comments_on_parent_id"
   end
 
   create_table "commentui_topics", force: :cascade do |t|
@@ -54,5 +57,6 @@ ActiveRecord::Schema.define(version: 20191109044444) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "commentui_comments", "commentui_comments", column: "parent_id", on_update: :restrict, on_delete: :cascade
   add_foreign_key "commentui_comments", "commentui_topics", column: "topic_id", on_update: :cascade, on_delete: :cascade
 end

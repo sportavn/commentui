@@ -5,6 +5,8 @@ spec/dummy/db/*.sqlite3
 spec/dummy/db/*.sqlite3-journal
 spec/dummy/log/*.log
 spec/dummy/tmp/
+spec/dummy/.byebug_history
+.byebug_history
 coverage
 .env
 

@@ -18,4 +18,8 @@ Commentui.configure do |config|
   # ===> allow_modify_destroy should gem provides destroy comments function
   # Defautl: true
   # config.allow_modify_destroy = true
+
+  # ===> comment_orders_by comments order
+  # Defautl: { created_at: :asc }
+  # config.comment_orders_by = { created_at: :asc }
 end
