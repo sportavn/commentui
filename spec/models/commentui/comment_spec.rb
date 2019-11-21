@@ -36,6 +36,8 @@ module Commentui
         expected = {
           id: comment.id,
           content: comment.content,
+          has_children: comment.has_children,
+          parent_id: comment.parent_id,
           updated_at: comment.updated_at,
           created_at: comment.created_at,
           creator: comment.creator,
